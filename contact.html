@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contactez-nous pour vos besoins en dépannage informatique. Intervention à domicile, à distance ou en atelier.">
+    <title>Contact - Dépannage Informatique</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <a href="index.html">Druzila67 Informatique</a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="tarifs.html">Tarifs</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="mentions-legales.html">Mentions légales</a></li>
+                </ul>
+                <button class="menu-toggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">Dépannage Informatique à domicile, à distance ou en atelier</h1>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-page-section">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            
+            <div class="contact-intro">
+                <p>Vous pouvez me contacter via le formulaire ci-dessous ou par téléphone au <strong>06 XX XX XX XX</strong> <em>(sms ou appel)</em></p>
+                <p><strong>Siège social & Atelier :</strong> [Adresse à compléter]</p>
+            </div>
+
+            <div class="contact-form-wrapper">
+                <h3>Besoin d'infos supplémentaires ?</h3>
+                
+                <!-- Messages de succès/erreur -->
+                <div id="form-message" class="form-message" style="display: none;"></div>
+                
+                <form class="contact-form" action="contact.php" method="POST">
+                    <div class="form-group">
+                        <label for="nom">Nom</label>
+                        <input type="text" id="nom" name="nom">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prenom">Prénom</label>
+                        <input type="text" id="prenom" name="prenom">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Adresse e-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telephone">Téléphone</label>
+                        <input type="tel" id="telephone" name="telephone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+
+                    <!-- Honeypot pour protection anti-spam -->
+                    <div style="position: absolute; left: -9999px; opacity: 0;" aria-hidden="true">
+                        <label for="website">Ne pas remplir ce champ</label>
+                        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <button type="submit" class="btn-primary">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Druzila67 Informatique. Tous droits réservés.</p>
+            <p>A vos côtés depuis 2024 !</p>
+            <p><a href="mentions-legales.html">Mentions légales</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
