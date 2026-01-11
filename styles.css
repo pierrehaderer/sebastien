@@ -1,7 +1,7 @@
 /* Reset et variables */
 :root {
-    --primary-color: #AF0C07;
-    --secondary-color: #870705;
+    --primary-color: #2b07af;
+    --secondary-color: #070587;
     --text-color: #1f2937;
     --text-light: #6b7280;
     --bg-light: #f9fafb;
@@ -819,7 +819,7 @@ html {
 }
 
 .tarif-price-main {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: bold;
     color: var(--primary-color);
     margin-bottom: 0.5rem;
