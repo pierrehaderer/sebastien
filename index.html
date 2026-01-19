@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Dépannage informatique à domicile, à distance ou en atelier. Services informatiques professionnels dans toute la région.">
-    <title>Dépannage Informatique - Domicile, Distance, Atelier</title>
+    <meta name="description" content="Dépannage informatique professionnel à domicile, à distance ou en atelier. Solutions informatiques adaptées à vos besoins.">
+    <title>Druzila67 Informatique - Dépannage Informatique Professionnel</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,6 +17,8 @@
                 </div>
                 <ul class="nav-menu">
                     <li><a href="index.html" class="active">Accueil</a></li>
+                    <li><a href="me-connaitre.html">Me connaître</a></li>
+                    <li><a href="mes-services.html">Mes services</a></li>
                     <li><a href="tarifs.html">Tarifs</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="mentions-legales.html">Mentions légales</a></li>
@@ -30,186 +32,75 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero hero-index">
+    <!-- Landing Page Hero Section -->
+    <section class="landing-hero" style="background-image: url('landing-page-background.jpg');">
+        <div class="landing-overlay"></div>
         <div class="container">
-            <img src="accueil.jpg" alt="Description" class="hero-image">
-        </div>
-    </section>
-
-    <!-- Formules de dépannage -->
-    <section class="formules-section">
-        <div class="container">
-            <h2 class="section-title">Nos Formules de Dépannage Informatique :</h2>
-            <h3 class="section-subtitle">Domicile – Distance – Atelier</h3>
-            
-            <div class="formules-grid">
-                <div class="formule-card">
-                    <div class="formule-icon">🏠</div>
-                    <h3>À Domicile</h3>
-                    <p>Nous intervenons pour des déplacements dans toute la région. Il est également possible d'organiser des interventions en dehors de la région sur demande spécifique. Pour toute question ou demande particulière, n'hésitez pas à nous contacter.</p>
+            <div class="landing-content">
+                <div class="landing-text">
+                    <h1 class="landing-title">Dépannage Informatique Professionnel</h1>
+                    <p class="landing-description">Votre ordinateur, tablette ou smartphone vous pose problème ? Nous intervenons à domicile, à distance ou en atelier pour résoudre tous vos problèmes informatiques rapidement et efficacement.</p>
+                    <p class="landing-description">Expertise, réactivité et solutions personnalisées pour tous vos besoins informatiques dans la région Alsace.</p>
+                    
+                    <!-- Messages de succès/erreur -->
+                    <div id="form-message" class="form-message" style="display: none;"></div>
+                    
+                    <!-- Système de boutons interactif -->
+                    <div id="depannage-wizard" class="depannage-wizard">
+                        <!-- Étape 1: Bouton initial -->
+                        <div id="step-1" class="wizard-step active wizard-step-centered">
+                            <button type="button" class="btn-primary btn-wizard" id="btn-init">Besoin d'un dépannage ?</button>
+                        </div>
+                        
+                        <!-- Étape 2: Choix du type d'appareil -->
+                        <div id="step-2" class="wizard-step wizard-step-centered">
+                            <div class="wizard-buttons-group">
+                                <button type="button" class="btn-choice" data-value="PC">PC</button>
+                                <button type="button" class="btn-choice" data-value="Console">Console</button>
+                                <button type="button" class="btn-choice" data-value="Smartphone">Smartphone</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Étape 3: Choix matériel/logiciel -->
+                        <div id="step-3" class="wizard-step wizard-step-centered">
+                            <div class="wizard-buttons-group">
+                                <button type="button" class="btn-choice" data-value="Logiciel">Logiciel</button>
+                                <button type="button" class="btn-choice" data-value="Matériel">Matériel</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Étape 4: Formulaire -->
+                        <div id="step-4" class="wizard-step">
+                            <form id="depannage-form" class="wizard-form" action="contact.php" method="POST">
+                                <div class="form-group form-group-inline">
+                                    <label for="nom_complet">Nom</label>
+                                    <input type="text" id="nom_complet" name="nom_complet">
+                                </div>
+                                <div class="form-group form-group-inline">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group form-group-inline">
+                                    <label for="telephone">Téléphone</label>
+                                    <input type="tel" id="telephone" name="telephone">
+                                </div>
+                                <div class="form-group form-group-hidden">
+                                    <input type="hidden" id="appareil" name="appareil" value="">
+                                    <input type="hidden" id="type_probleme" name="type_probleme" value="">
+                                    <textarea id="message" name="message" style="display: none;"></textarea>
+                                </div>
+                                
+                                <!-- Honeypot pour protection anti-spam -->
+                                <div style="position: absolute; left: -9999px; opacity: 0;" aria-hidden="true">
+                                    <label for="website">Ne pas remplir ce champ</label>
+                                    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                                </div>
+                                
+                                <button type="submit" class="btn-primary">Envoyer</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="formule-card">
-                    <div class="formule-icon">💻</div>
-                    <h3>À Distance</h3>
-                    <p>Vous avez besoin d'une intervention rapide à distance ? Nous offrons un dépannage immédiat et sécurisé grâce à la télémaintenance, qui permet de résoudre vos problèmes informatiques sans délai, directement depuis chez vous. Pour cela suivez <a href="teamviewer.html">ces instructions</a></p>
-                </div>
-                
-                <div class="formule-card">
-                    <div class="formule-icon">🔧</div>
-                    <h3>En Atelier</h3>
-                    <p>Notre atelier est idéal pour les pannes matérielles complexes ou la récupération avancée de données. Vous pouvez déposer votre matériel directement sur place (avec des horaires en soirée le mardi et jeudi jusqu'à 21h30 ou sur rendez-vous), ou demander un enlèvement à domicile ou sur site.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services-section">
-        <div class="container">
-            <!-- Diagnostic & Optimisation -->
-            <div class="service-block">
-                <h2 class="service-title">🔍 Diagnostic & Optimisation : <br>Vitesse et Stabilité de votre Ordinateur, Tablette, Smartphone & Console</h2>
-                <ul class="service-list">
-                    <li>Votre PC est <strong>lent au démarrage</strong> ?</li>
-                    <li>Subit des <strong>blocages</strong> ?</li>
-                    <li><strong>Écrans bleus/noirs</strong> ?</li>
-                    <li>Bugs critiques ?</li>
-                    <li>Nettoyage disque dur</li>
-                    <li><strong>Mise à niveau</strong> pour booster la vitesse (installation <strong>SSD</strong> et <strong>RAM</strong>)</li>
-                    <li><strong>Nettoyage interne</strong> (disque, ventilation, microprocesseur, ...) pour prévenir la <strong>surchauffe</strong>.</li>
-                    <li>Mise en place de sauvegarde auto</li>
-                    <li><strong>Récupération de vos données</strong> perdues ou effacées (photos, documents).</li>
-                </ul>
-            </div>
-
-            <!-- Sécurité & Gestion -->
-            <div class="service-block">
-                <h2 class="service-title">🔒 Sécurité & Gestion Simplifiée de Vos Comptes en Ligne : Gérez votre avenir numérique</h2>
-                <p class="service-intro">Se concentrer sur les problématiques de <strong>Sécurité</strong> et de <strong>Simplicité</strong>.</p>
-                <ul class="service-list">
-                    <li><strong>Sécurisez</strong> tous vos comptes et profils (Banque, Ameli, Impôts)</li>
-                    <li><strong>Sécurisation</strong> de votre ordinateur Windows pour supprimer virus, malwares, publicités</li>
-                    <li>Mise en place de <strong>mots de passe robustes</strong> et d'un gestionnaire sécurisé</li>
-                    <li>Activation de la <strong>double authentification (2FA)</strong> pour une protection maximale</li>
-                    <li>Configuration et <strong>synchronisation de vos mails</strong> et contacts sur tous vos appareils</li>
-                    <li>Éviter le <strong>phishing</strong> et les <strong>arnaques</strong> en ligne</li>
-                </ul>
-            </div>
-
-            <!-- Conseil 100% Neutre -->
-            <div class="service-block">
-                <h2 class="service-title">💡 Conseil 100% Neutre Avant Achat : PC, Imprimante, Tablette, Smartphone & Console</h2>
-                <p class="service-note"><em><strong>Nous ne vendons aucun matériel.</strong></em></p>
-                <ul class="service-list">
-                    <li>Profitez de conseils <strong>100% neutres et personnalisés</strong> pour économiser de l'argent et trouver l'outil <strong>adapté</strong></li>
-                    <li>Aide au choix (PC, imprimante, tablette) pour obtenir le <strong>meilleur rapport qualité/prix</strong></li>
-                    <li>Audit gratuit de votre ancien ordinateur : est-il plus <strong>écologique</strong> et économique de le <strong>réparer/restaurer</strong>, ou procéder à son <strong>remplacement</strong> ?</li>
-                    <li>Accompagnement dans <strong>la sélection et l'achat en ligne</strong>, sans commission</li>
-                </ul>
-            </div>
-
-            <!-- Aide & Accompagnement -->
-            <div class="service-block">
-                <h2 class="service-title">📚 Aide & Accompagnement à domicile/distance pour devenir autonome</h2>
-                <ul class="service-list">
-                    <li>Maîtrise des logiciels de bureautique : <strong>Word, Excel, PowerPoint, ...</strong></li>
-                    <li>Installation et configuration de votre matériel (Imprimante, réseau, webcam, ...)</li>
-                    <li>Apprendre à <strong>ranger et organiser</strong> efficacement vos photos et documents</li>
-                    <li>Raccourcis clavier & optimisation de travail</li>
-                    <li>Aide aux démarches administratives en ligne (CAF, Impôts, Ameli, ...)</li>
-                    <li>Paramétrages de vos <strong>réseaux sociaux</strong> (Facebook, Instagram, Whatsapp, Teams, ...)</li>
-                </ul>
-            </div>
-
-            <!-- Objets Connectés -->
-            <div class="service-block">
-                <h2 class="service-title">📱 Installation & Configuration d'Objets Connectés : Tablette, Smartphone & Domotique</h2>
-                <ul class="service-list">
-                    <li><strong>Mise en route</strong> et configuration de vos nouvelles <strong>Tablettes</strong> et <strong>Smartphones</strong></li>
-                    <li>Connexion des <strong>Montres connectées</strong> et autres appareils à votre réseau</li>
-                    <li><strong>Sauvegarde sécurisée</strong> de vos photos et données via un Cloud (Google, iCloud, OneDrive…)</li>
-                </ul>
-            </div>
-
-            <!-- Internet & Wi-Fi -->
-            <div class="service-block">
-                <h2 class="service-title">📶 Résolution des Problèmes d'Internet, Fibre, ADSL, Wi-Fi</h2>
-                <ul class="service-list">
-                    <li>Résolution de vos <strong>problèmes de connexion Internet</strong> (coupures, lenteurs, pannes)</li>
-                    <li>Configuration complète de votre <strong>Box Fibre ou ADSL</strong></li>
-                    <li>Switch, <strong>répartiteur Ethernet</strong> Gigabit</li>
-                    <li><strong>Optimisation et sécurisation</strong> de la couverture <strong>Wi-Fi</strong> pour toute la maison (répéteur, CPL)</li>
-                </ul>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Formation Section -->
-    <section class="formation-section">
-        <div class="container">
-            <h2 class="section-title">Les différentes formations proposées</h2>
-            
-            <div class="formation-grid">
-                <div class="formation-item">
-                    <h3>Premiers pas en informatique</h3>
-                    <p>Découvrez comment prendre en main votre ordinateur, tablette, smartphone, montre connectée. Apprenez à envoyer, recevoir et transférer des emails, télécharger des pièces jointes, et rédiger textes ou tableaux (Word, Excel, OpenOffice).</p>
-                </div>
-                
-                <div class="formation-item">
-                    <h3>Organiser et sécuriser vos fichiers</h3>
-                    <p>Créez de nouveaux dossiers, renommez vos fichiers et photos, et maîtrisez les fonctions copier, couper, coller. Gérez vos raccourcis clavier, imprimez et scannez facilement vos documents, et utilisez une clé USB pour transférer ou sauvegarder vos données sur un disque dur externe.</p>
-                </div>
-                
-                <div class="formation-item">
-                    <h3>Maîtrise des connexions</h3>
-                    <p>Configurez le Bluetooth, le Wifi et votre box internet. Naviguez en toute sécurité sur Internet, Facebook et Youtube, organisez vos onglets et favoris, et sécurisez vos identifiants, mots de passe et contacts.</p>
-                </div>
-                
-                <div class="formation-item">
-                    <h3>Sécurité, achats et démarches en ligne</h3>
-                    <p>Créez des mots de passe robustes, gérez vos comptes en ligne, réalisez des paiements sécurisés via PayPal, carte bancaire, virement ou Wallet. Effectuez vos démarches administratives en ligne : banque, impôts, assurances, préfecture, santé…</p>
-                </div>
-                
-                <div class="formation-item">
-                    <h3>Outils de communication et optimisation</h3>
-                    <p>Créez et utilisez vos comptes Skype ou Zoom pour la visioconférence. Effacez l'historique de vos activités numériques et connectez vos appareils (smartphone, tablette, montre connectée) à votre ordinateur ou téléviseur via HDMI pour partager films et photos.</p>
-                </div>
-                
-                <div class="formation-item">
-                    <h3>Maintenance et performance au quotidien</h3>
-                    <p>Vérifiez et réalisez vos mises à jour, effectuez la maintenance sur votre matériel (ordinateur, tablette, smartphone…) pour bénéficier d'un outil de travail rapide, sûr et bien entretenu.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 class="section-title">Contactez-nous</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Informations de contact</h3>
-                    <p><strong>Email :</strong> contact@XXX</p>
-                    <p><strong>Téléphone :</strong> 06 XX XX XX XX</p>
-                    <p><strong>Zone d'intervention :</strong> Région Alsace</p>
-                </div>
-                <div class="contact-hours">
-                    <h3>Horaires</h3>
-                    <p><strong>Lundi :</strong> 09:00–18:30</p>
-                    <p><strong>Mardi :</strong> 09:00–21:30 <em>(nocturne)</em></p>
-                    <p><strong>Mercredi :</strong> 09:00–18:30</p>
-                    <p><strong>Jeudi :</strong> 09:00–21:30 <em>(nocturne)</em></p>
-                    <p><strong>Vendredi :</strong> 09:00–18:30</p>
-                    <p><strong>Samedi :</strong> Sur rendez-vous</p>
-                    <p><strong>Dimanche :</strong> Fermé</p>
-                </div>
-            </div>
-            <div class="contact-cta">
-                <a href="contact.html" class="btn-primary">Voir la page contact complète</a>
             </div>
         </div>
     </section>
@@ -225,4 +116,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-

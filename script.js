@@ -88,6 +88,93 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Gestion du wizard de dépannage sur la landing page
+    const depannageWizard = document.getElementById('depannage-wizard');
+    if (depannageWizard) {
+        // S'assurer que seules les étapes non-actives sont cachées au chargement
+        const allSteps = document.querySelectorAll('.wizard-step');
+        allSteps.forEach(step => {
+            if (!step.classList.contains('active')) {
+                step.style.display = 'none';
+            }
+        });
+
+        let selectedAppareil = '';
+        let selectedType = '';
+
+        // Étape 1: Clic sur le bouton initial
+        const btnInit = document.getElementById('btn-init');
+        if (btnInit) {
+            btnInit.addEventListener('click', function() {
+                showStep(2);
+            });
+        }
+
+        // Étape 2: Choix du type d'appareil
+        const btnChoicesAppareil = document.querySelectorAll('#step-2 .btn-choice');
+        btnChoicesAppareil.forEach(btn => {
+            btn.addEventListener('click', function() {
+                selectedAppareil = this.getAttribute('data-value');
+                showStep(3);
+            });
+        });
+
+        // Étape 3: Choix matériel/logiciel
+        const btnChoicesType = document.querySelectorAll('#step-3 .btn-choice');
+        btnChoicesType.forEach(btn => {
+            btn.addEventListener('click', function() {
+                selectedType = this.getAttribute('data-value');
+                showStep(4);
+                
+                // Pré-remplir les champs cachés et le message
+                const appareilField = document.getElementById('appareil');
+                const typeProblemeField = document.getElementById('type_probleme');
+                const messageField = document.getElementById('message');
+                
+                if (appareilField) appareilField.value = selectedAppareil;
+                if (typeProblemeField) typeProblemeField.value = selectedType;
+                if (messageField) {
+                    messageField.value = `Type d'appareil : ${selectedAppareil}\nType de problème : ${selectedType}`;
+                }
+            });
+        });
+
+        // Étape 4: Soumission du formulaire
+        const depannageForm = document.getElementById('depannage-form');
+        if (depannageForm) {
+            depannageForm.addEventListener('submit', function(e) {
+                // S'assurer que les champs sont bien remplis avant soumission
+                const appareilField = document.getElementById('appareil');
+                const typeProblemeField = document.getElementById('type_probleme');
+                const messageField = document.getElementById('message');
+                
+                if (appareilField) appareilField.value = selectedAppareil;
+                if (typeProblemeField) typeProblemeField.value = selectedType;
+                if (messageField && !messageField.value) {
+                    messageField.value = `Type d'appareil : ${selectedAppareil}\nType de problème : ${selectedType}`;
+                }
+                
+                // Le formulaire se soumet normalement
+            });
+        }
+
+        function showStep(stepNumber) {
+            // Cacher toutes les étapes
+            const allSteps = document.querySelectorAll('.wizard-step');
+            allSteps.forEach(step => {
+                step.classList.remove('active');
+                step.style.display = 'none';
+            });
+
+            // Afficher l'étape demandée
+            const targetStep = document.getElementById(`step-${stepNumber}`);
+            if (targetStep) {
+                targetStep.classList.add('active');
+                targetStep.style.display = 'block';
+            }
+        }
+    }
+
     // Gestion des messages du formulaire de contact
     const urlParams = new URLSearchParams(window.location.search);
     const success = urlParams.get('success');

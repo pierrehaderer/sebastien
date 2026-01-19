@@ -17,11 +17,12 @@ if (isset($_POST['website']) && !empty($_POST['website'])) {
 }
 
 // Récupération et nettoyage des données
-$nom = isset($_POST['nom']) ? trim($_POST['nom']) : '';
-$prenom = isset($_POST['prenom']) ? trim($_POST['prenom']) : '';
+$nom_complet = isset($_POST['nom_complet']) ? trim($_POST['nom_complet']) : '';
 $email = isset($_POST['email']) ? trim($_POST['email']) : '';
 $telephone = isset($_POST['telephone']) ? trim($_POST['telephone']) : '';
 $message = isset($_POST['message']) ? trim($_POST['message']) : '';
+$appareil = isset($_POST['appareil']) ? trim($_POST['appareil']) : '';
+$type_probleme = isset($_POST['type_probleme']) ? trim($_POST['type_probleme']) : '';
 
 // Validation
 $errors = [];
@@ -44,20 +45,23 @@ if (!empty($errors)) {
 }
 
 // Préparation de l'email
-$subject = $subject_prefix . " - " . ($nom || $prenom ? $prenom . " " . $nom : "Sans nom");
+$subject = $subject_prefix . " - " . ($nom_complet ? $nom_complet : "Sans nom");
 
 // Construction du corps du message
 $email_body = "Nouveau message depuis le formulaire de contact\n\n";
 $email_body .= "=== Informations du contact ===\n";
-if ($nom) {
-    $email_body .= "Nom : " . htmlspecialchars($nom) . "\n";
-}
-if ($prenom) {
-    $email_body .= "Prénom : " . htmlspecialchars($prenom) . "\n";
+if ($nom_complet) {
+    $email_body .= "Nom complet : " . htmlspecialchars($nom_complet) . "\n";
 }
 $email_body .= "Email : " . htmlspecialchars($email) . "\n";
 if ($telephone) {
     $email_body .= "Téléphone : " . htmlspecialchars($telephone) . "\n";
+}
+if ($appareil) {
+    $email_body .= "Appareil : " . htmlspecialchars($appareil) . "\n";
+}
+if ($type_probleme) {
+    $email_body .= "Type de problème : " . htmlspecialchars($type_probleme) . "\n";
 }
 $email_body .= "\n=== Message ===\n";
 $email_body .= htmlspecialchars($message) . "\n";
@@ -75,13 +79,17 @@ $headers[] = "Content-Type: text/plain; charset=UTF-8";
 // Envoi de l'email
 $mail_sent = @mail($to_email, $subject, $email_body, implode("\r\n", $headers));
 
+// Déterminer la page de redirection (wizard depuis index.html ou formulaire depuis contact.html)
+$referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+$redirect_page = (strpos($referer, 'index.html') !== false || $appareil || $type_probleme) ? 'index.html' : 'contact.html';
+
 // Redirection selon le résultat
 if ($mail_sent) {
     // Email envoyé avec succès
-    header("Location: contact.html?success=1");
+    header("Location: " . $redirect_page . "?success=1");
 } else {
     // Erreur lors de l'envoi
-    header("Location: contact.html?error=" . urlencode("Une erreur est survenue lors de l'envoi du message. Veuillez réessayer ou nous contacter directement par téléphone."));
+    header("Location: " . $redirect_page . "?error=" . urlencode("Une erreur est survenue lors de l'envoi du message. Veuillez réessayer ou nous contacter directement par téléphone."));
 }
 exit;
 ?>

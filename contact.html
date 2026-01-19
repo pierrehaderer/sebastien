@@ -7,7 +7,7 @@
     <title>Contact - Dépannage Informatique</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="contact-page">
     <!-- Header / Navigation -->
     <header class="header">
         <nav class="navbar">
@@ -17,6 +17,8 @@
                 </div>
                 <ul class="nav-menu">
                     <li><a href="index.html">Accueil</a></li>
+                    <li><a href="me-connaitre.html">Me connaître</a></li>
+                    <li><a href="mes-services.html">Mes services</a></li>
                     <li><a href="tarifs.html">Tarifs</a></li>
                     <li><a href="contact.html" class="active">Contact</a></li>
                     <li><a href="mentions-legales.html">Mentions légales</a></li>
@@ -30,18 +32,15 @@
         </nav>
     </header>
 
-    <!-- Page Header -->
-    <section class="hero">
+    <!-- Contact Section -->
+    <section class="menu-section">
         <div class="container">
-            <h1 class="hero-title">Dépannage Informatique à domicile, à distance ou en atelier</h1>
+            <h2 class="section-title">Contact</h2>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact-page-section">
         <div class="container">
-            <h2 class="section-title">Contact</h2>
-            
             <div class="contact-intro">
                 <p>Vous pouvez me contacter via le formulaire ci-dessous ou par téléphone au <strong>06 XX XX XX XX</strong> <em>(sms ou appel)</em></p>
                 <p><strong>Siège social & Atelier :</strong> [Adresse à compléter]</p>
@@ -55,13 +54,8 @@
                 
                 <form class="contact-form" action="contact.php" method="POST">
                     <div class="form-group">
-                        <label for="nom">Nom</label>
-                        <input type="text" id="nom" name="nom">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="prenom">Prénom</label>
-                        <input type="text" id="prenom" name="prenom">
+                        <label for="nom_complet">Nom</label>
+                        <input type="text" id="nom_complet" name="nom_complet">
                     </div>
 
                     <div class="form-group">
