@@ -139,6 +139,22 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
+        // Étape 4: Gestion du créneau horaire
+        const creneauRadios = document.querySelectorAll('input[name="creneau"]');
+        creneauRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                const messageField = document.getElementById('message');
+                if (messageField) {
+                    // Reconstruire le message avec le créneau
+                    let messageContent = `Type d'appareil : ${selectedAppareil}\nType de problème : ${selectedType}`;
+                    if (this.checked) {
+                        messageContent += `\nCréneau horaire souhaité : ${this.value}`;
+                    }
+                    messageField.value = messageContent;
+                }
+            });
+        });
+
         // Étape 4: Soumission du formulaire
         const depannageForm = document.getElementById('depannage-form');
         if (depannageForm) {
@@ -150,8 +166,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 if (appareilField) appareilField.value = selectedAppareil;
                 if (typeProblemeField) typeProblemeField.value = selectedType;
-                if (messageField && !messageField.value) {
-                    messageField.value = `Type d'appareil : ${selectedAppareil}\nType de problème : ${selectedType}`;
+                
+                // Construire le message avec toutes les informations
+                let messageContent = `Type d'appareil : ${selectedAppareil}\nType de problème : ${selectedType}`;
+                
+                // Ajouter le créneau horaire au message si sélectionné
+                const creneauRadio = document.querySelector('input[name="creneau"]:checked');
+                if (creneauRadio) {
+                    messageContent += `\nCréneau horaire souhaité : ${creneauRadio.value}`;
+                }
+                
+                if (messageField) {
+                    messageField.value = messageContent;
                 }
                 
                 // Le formulaire se soumet normalement

@@ -23,6 +23,7 @@ $telephone = isset($_POST['telephone']) ? trim($_POST['telephone']) : '';
 $message = isset($_POST['message']) ? trim($_POST['message']) : '';
 $appareil = isset($_POST['appareil']) ? trim($_POST['appareil']) : '';
 $type_probleme = isset($_POST['type_probleme']) ? trim($_POST['type_probleme']) : '';
+$creneau = isset($_POST['creneau']) ? trim($_POST['creneau']) : '';
 
 // Validation
 $errors = [];
@@ -62,6 +63,9 @@ if ($appareil) {
 }
 if ($type_probleme) {
     $email_body .= "Type de problème : " . htmlspecialchars($type_probleme) . "\n";
+}
+if ($creneau) {
+    $email_body .= "Créneau horaire souhaité : " . htmlspecialchars($creneau) . "\n";
 }
 $email_body .= "\n=== Message ===\n";
 $email_body .= htmlspecialchars($message) . "\n";

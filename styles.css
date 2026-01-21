@@ -47,7 +47,7 @@ body.teamviewer-page {
 
 /* Header / Navigation */
 .header {
-    background-color: var(--bg-white);
+    background-image: url("background-image.jpg");
     box-shadow: var(--shadow);
     position: sticky;
     top: 0;
@@ -72,18 +72,24 @@ body.teamviewer-page {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 3.3rem;
+    font-size: 1.2rem;
+    margin-right:20px;
+    margin-bottom:10px;
 }
 
 .nav-menu a {
-    color: var(--text-color);
+    color: var(--bg-white);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
 }
 
-.nav-menu a:hover,
 .nav-menu a.active {
+    color: grey;
+}
+
+.nav-menu a:hover {
     color: var(--primary-color);
 }
 
@@ -342,20 +348,67 @@ body.teamviewer-page {
     display: none;
 }
 
+.wizard-form .form-group-creneau {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.wizard-form .form-group-creneau > label {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 500;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.creneau-radio-group {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 9px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+.radio-label input[type="radio"] {
+    margin-right: 0.5rem;
+    cursor: pointer;
+    width: auto;
+    flex-shrink: 0;
+}
+
+.radio-label span {
+    user-select: none;
+}
+
 .wizard-form .btn-primary {
     font-size: 1rem;
-    margin-top: 0.75rem;
     width: 100%;
 }
 
-.menu-section {
-    padding: 3rem 0;
+.menu-container {
     background-color: var(--bg-light);
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.menu-section {
+    padding: 1rem 0;
 }
 
 .sub-menu-section {
-    padding: 2rem 0;
-    background-color: var(--bg-light);
+    padding: 1rem 0;
 }
 
 /* Formules Section */
@@ -416,7 +469,7 @@ body.teamviewer-page {
 
 /* Services Section */
 .services-section {
-    padding: 2rem 0;
+    padding: 2rem 0 0 0;
 }
 
 .service-block {
@@ -500,7 +553,6 @@ body.teamviewer-page {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    margin-top: 2rem;
 }
 
 .formation-item {
@@ -530,7 +582,6 @@ body.teamviewer-page {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 3rem;
-    margin-top: 2rem;
 }
 
 .contact-info,
@@ -591,11 +642,28 @@ body.teamviewer-page {
         text-align: center;
         transition: 0.3s;
         box-shadow: var(--shadow);
-        padding: 2rem 0;
+        padding: 1rem 0;
+        gap: 0;
     }
 
     .nav-menu.active {
         left: 0;
+    }
+
+    .nav-menu li {
+        padding: 0.5rem 0;
+    }
+
+    .nav-menu a {
+        color: var(--text-color);
+    }
+
+    .nav-menu a.active {
+        color: var(--primary-color);
+    }
+
+    .menu-container {
+        border-radius: 0;
     }
 
     .hero-title {
@@ -649,6 +717,23 @@ body.teamviewer-page {
 
     .wizard-form .form-group-inline input {
         min-width: 150px;
+    }
+
+    .wizard-form .form-group-creneau {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.1rem;
+    }
+
+    .wizard-form .form-group-creneau > label {
+        margin-bottom: 0.25rem;
+    }
+
+    .creneau-radio-group {
+        flex-direction: row;
+        gap: 1rem;
+        align-items: center;
+        flex-wrap: wrap;
     }
 
     .section-title {
@@ -720,7 +805,7 @@ html {
 
 /* Page Tarifs */
 .tarifs-section {
-    padding: 4rem 0;
+    padding: 2rem 0;
 }
 
 .tarifs-intro {
@@ -925,7 +1010,7 @@ html {
 
 /* Page Contact */
 .contact-page-section {
-    padding: 4rem 0;
+    padding: 2rem 0;
 }
 
 .contact-page-grid {
@@ -1095,7 +1180,7 @@ html {
 
 /* Page Mentions légales */
 .mentions-section {
-    padding: 4rem 0;
+    padding: 2rem 0;
 }
 
 .mentions-content {

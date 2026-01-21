@@ -17,8 +17,8 @@
                 </div>
                 <ul class="nav-menu">
                     <li><a href="index.html" class="active">Accueil</a></li>
-                    <li><a href="me-connaitre.html">Me connaître</a></li>
-                    <li><a href="mes-services.html">Mes services</a></li>
+                    <li><a href="nous-connaitre.html">Nous connaître</a></li>
+                    <li><a href="nos-services.html">Nos services</a></li>
                     <li><a href="tarifs.html">Tarifs</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="mentions-legales.html">Mentions légales</a></li>
@@ -39,7 +39,7 @@
             <div class="landing-content">
                 <div class="landing-text">
                     <h1 class="landing-title">Dépannage Informatique Professionnel</h1>
-                    <p class="landing-description">Votre ordinateur, tablette ou smartphone vous pose problème ? Nous intervenons à domicile, à distance ou en atelier pour résoudre tous vos problèmes informatiques rapidement et efficacement.</p>
+                    <p class="landing-description">Votre ordinateur, console, tablette ou smartphone vous pose problème ? Nous intervenons à domicile, à distance ou en atelier pour résoudre tous vos problèmes informatiques rapidement et efficacement.</p>
                     <p class="landing-description">Expertise, réactivité et solutions personnalisées pour tous vos besoins informatiques dans la région Alsace.</p>
                     
                     <!-- Messages de succès/erreur -->
@@ -66,6 +66,7 @@
                             <div class="wizard-buttons-group">
                                 <button type="button" class="btn-choice" data-value="Logiciel">Logiciel</button>
                                 <button type="button" class="btn-choice" data-value="Matériel">Matériel</button>
+                                <button type="button" class="btn-choice" data-value="Ne sais pas">Je ne sais pas</button>
                             </div>
                         </div>
                         
@@ -88,6 +89,24 @@
                                     <input type="hidden" id="appareil" name="appareil" value="">
                                     <input type="hidden" id="type_probleme" name="type_probleme" value="">
                                     <textarea id="message" name="message" style="display: none;"></textarea>
+                                </div>
+                                
+                                <div class="form-group form-group-creneau">
+                                    <label>Rappel de préférence :</label>
+                                    <div class="creneau-radio-group">
+                                        <label class="radio-label">
+                                            <input type="radio" name="creneau" value="matin" id="creneau-matin">
+                                            <span>Matin</span>
+                                        </label>
+                                        <label class="radio-label">
+                                            <input type="radio" name="creneau" value="après-midi" id="creneau-apres-midi">
+                                            <span>Après-midi</span>
+                                        </label>
+                                        <label class="radio-label">
+                                            <input type="radio" name="creneau" value="en soirée" id="creneau-soiree">
+                                            <span>En soirée</span>
+                                        </label>
+                                    </div>
                                 </div>
                                 
                                 <!-- Honeypot pour protection anti-spam -->
