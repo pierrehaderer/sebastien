@@ -105,7 +105,7 @@ body.teamviewer-page {
 .menu-toggle span {
     width: 25px;
     height: 3px;
-    background-color: var(--text-color);
+    background-color: var(--bg-light);
     transition: all 0.3s;
 }
 
