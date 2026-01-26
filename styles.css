@@ -202,7 +202,6 @@ body.teamviewer-page {
 .landing-text {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
     background: rgba(255, 255, 255, 0.9);
     padding: 2rem;
     border-radius: 8px;
@@ -235,12 +234,13 @@ body.teamviewer-page {
 
 /* Wizard de dépannage */
 .depannage-wizard {
-    min-height: 100px;
+    min-height: 80px;
 }
 
 .wizard-step {
     display: none !important;
     animation: fadeIn 0.3s ease-in;
+    margin-bottom: 1rem;
 }
 
 .wizard-step.active {
@@ -288,7 +288,7 @@ body.teamviewer-page {
     text-decoration: underline;
     cursor: pointer;
     font-size: 1.1rem;
-    margin-top: 1rem;
+    text-align: center;
     transition: opacity 0.3s;
 }
 
