@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
         menuToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
             
+            // Animation du bouton hamburger
+            const spans = menuToggle.querySelectorAll('span');
         });
     }
 
@@ -128,22 +130,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Étape 4: Gestion du créneau horaire
-        const creneauRadios = document.querySelectorAll('input[name="creneau"]');
-        creneauRadios.forEach(radio => {
-            radio.addEventListener('change', function() {
-                const messageField = document.getElementById('message');
-                if (messageField) {
-                    // Reconstruire le message avec le créneau
-                    let messageContent = `Type d'appareil : ${selectedAppareil}\nType de problème : ${selectedType}`;
-                    if (this.checked) {
-                        messageContent += `\nCréneau horaire souhaité : ${this.value}`;
-                    }
-                    messageField.value = messageContent;
-                }
-            });
-        });
-
         // Étape 4: Soumission du formulaire
         const depannageForm = document.getElementById('depannage-form');
         if (depannageForm) {
@@ -155,18 +141,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 if (appareilField) appareilField.value = selectedAppareil;
                 if (typeProblemeField) typeProblemeField.value = selectedType;
-                
-                // Construire le message avec toutes les informations
-                let messageContent = `Type d'appareil : ${selectedAppareil}\nType de problème : ${selectedType}`;
-                
-                // Ajouter le créneau horaire au message si sélectionné
-                const creneauRadio = document.querySelector('input[name="creneau"]:checked');
-                if (creneauRadio) {
-                    messageContent += `\nCréneau horaire souhaité : ${creneauRadio.value}`;
-                }
-                
-                if (messageField) {
-                    messageField.value = messageContent;
+                if (messageField && !messageField.value) {
+                    messageField.value = `Type d'appareil : ${selectedAppareil}\nType de problème : ${selectedType}`;
                 }
                 
                 // Le formulaire se soumet normalement
@@ -188,6 +164,38 @@ document.addEventListener('DOMContentLoaded', function() {
                 targetStep.style.display = 'block';
             }
         }
+    }
+
+    // Gestion du texte "Besoin de plus d'information ?"
+    const moreInfoText = document.getElementById('more-info-text');
+    if (moreInfoText) {
+        moreInfoText.addEventListener('click', function() {
+            // Remplacer le texte avec une flèche vers le haut (image SVG)
+            this.innerHTML = 'Plus d\'informations disponibles dans les menus en haut de page. <img src="fleche.png" alt="">';
+            this.style.cursor = 'default';
+            this.style.textDecoration = 'none';
+            
+            // Détecter si on est sur mobile (largeur d'écran < 768px)
+            const isMobile = window.innerWidth < 768;
+            
+            if (isMobile) {
+                // Sur mobile : seulement le bouton hamburger
+                const menuToggle = document.querySelector('.menu-toggle');
+                if (menuToggle) {
+                    const spans = menuToggle.querySelectorAll('span');
+                    spans.forEach(span => {
+                        span.classList.add('rainbow-animation');
+                    });
+                }
+            } else {
+                // Sur desktop : les liens du menu
+                const navMenuLinks = document.querySelectorAll('.nav-menu a');
+                navMenuLinks.forEach(link => {
+                    link.classList.add('rainbow-animation');
+                    link.style.fontWeight = 'bold';
+                });
+            }
+        });
     }
 
     // Gestion des messages du formulaire de contact

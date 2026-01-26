@@ -50,6 +50,7 @@
                         <!-- Étape 1: Bouton initial -->
                         <div id="step-1" class="wizard-step active wizard-step-centered">
                             <button type="button" class="btn-primary btn-wizard" id="btn-init">Besoin d'un dépannage ?</button>
+                            <p id="more-info-text" class="more-info-text">Besoin de plus d'informations ?</p>
                         </div>
                         
                         <!-- Étape 2: Choix du type d'appareil -->
@@ -78,12 +79,8 @@
                                     <input type="text" id="nom_complet" name="nom_complet">
                                 </div>
                                 <div class="form-group form-group-inline">
-                                    <label for="email">Email</label>
-                                    <input type="email" id="email" name="email" required>
-                                </div>
-                                <div class="form-group form-group-inline">
                                     <label for="telephone">Téléphone</label>
-                                    <input type="tel" id="telephone" name="telephone">
+                                    <input type="tel" id="telephone" name="telephone" required>
                                 </div>
                                 <div class="form-group form-group-hidden">
                                     <input type="hidden" id="appareil" name="appareil" value="">

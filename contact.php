@@ -25,12 +25,19 @@ $appareil = isset($_POST['appareil']) ? trim($_POST['appareil']) : '';
 $type_probleme = isset($_POST['type_probleme']) ? trim($_POST['type_probleme']) : '';
 $creneau = isset($_POST['creneau']) ? trim($_POST['creneau']) : '';
 
+// Déterminer le type de formulaire (wizard ou contact classique)
+$is_wizard = !empty($appareil) || !empty($type_probleme);
+
 // Validation
 $errors = [];
 
-if (empty($email)) {
-    $errors[] = "L'adresse email est obligatoire.";
-} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+// Pour le wizard et le formulaire de contact : téléphone obligatoire
+if (empty($telephone)) {
+    $errors[] = "Le numéro de téléphone est obligatoire.";
+}
+
+// Validation de l'email si fourni (pour le wizard)
+if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $errors[] = "L'adresse email n'est pas valide.";
 }
 
@@ -41,7 +48,8 @@ if (empty($message)) {
 // Si des erreurs, rediriger vers le formulaire avec les erreurs
 if (!empty($errors)) {
     $error_message = implode(" ", $errors);
-    header("Location: contact.html?error=" . urlencode($error_message));
+    $redirect_page = $is_wizard ? 'index.html' : 'contact.html';
+    header("Location: " . $redirect_page . "?error=" . urlencode($error_message));
     exit;
 }
 
@@ -54,9 +62,9 @@ $email_body .= "=== Informations du contact ===\n";
 if ($nom_complet) {
     $email_body .= "Nom complet : " . htmlspecialchars($nom_complet) . "\n";
 }
-$email_body .= "Email : " . htmlspecialchars($email) . "\n";
-if ($telephone) {
-    $email_body .= "Téléphone : " . htmlspecialchars($telephone) . "\n";
+$email_body .= "Téléphone : " . htmlspecialchars($telephone) . "\n";
+if ($email) {
+    $email_body .= "Email : " . htmlspecialchars($email) . "\n";
 }
 if ($appareil) {
     $email_body .= "Appareil : " . htmlspecialchars($appareil) . "\n";
@@ -75,8 +83,12 @@ $email_body .= "IP : " . $_SERVER['REMOTE_ADDR'] . "\n";
 
 // En-têtes de l'email
 $headers = [];
-$headers[] = "From: " . $email;
-$headers[] = "Reply-To: " . $email;
+if (!empty($email)) {
+    $headers[] = "From: " . $email;
+    $headers[] = "Reply-To: " . $email;
+} else {
+    $headers[] = "From: noreply@druzila67informatique.fr";
+}
 $headers[] = "X-Mailer: PHP/" . phpversion();
 $headers[] = "Content-Type: text/plain; charset=UTF-8";
 
