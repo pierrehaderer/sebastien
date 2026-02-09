@@ -149,6 +149,15 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
+        // Boutons retour
+        const btnBacks = document.querySelectorAll('.btn-back');
+        btnBacks.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const gotoStep = parseInt(this.getAttribute('data-goto'));
+                showStep(gotoStep);
+            });
+        });
+
         function showStep(stepNumber) {
             // Cacher toutes les étapes
             const allSteps = document.querySelectorAll('.wizard-step');
@@ -194,6 +203,52 @@ document.addEventListener('DOMContentLoaded', function() {
                     link.classList.add('rainbow-animation');
                     link.style.fontWeight = 'bold';
                 });
+            }
+        });
+    }
+
+    // Validation email en temps réel sur la page contact
+    const emailField = document.querySelector('.contact-form #email');
+    if (emailField) {
+        const emailError = document.getElementById('email-error');
+        
+        emailField.addEventListener('blur', function() {
+            const value = this.value.trim();
+            if (value !== '' && !this.validity.valid) {
+                if (emailError) {
+                    emailError.style.display = 'block';
+                }
+                this.style.borderColor = '#ef4444';
+            } else {
+                if (emailError) {
+                    emailError.style.display = 'none';
+                }
+                this.style.borderColor = '';
+            }
+        });
+
+        emailField.addEventListener('input', function() {
+            if (this.validity.valid) {
+                if (emailError) {
+                    emailError.style.display = 'none';
+                }
+                this.style.borderColor = '';
+            }
+        });
+    }
+
+    // Validation téléphone en temps réel sur la page contact
+    const telField = document.querySelector('.contact-form #telephone');
+    if (telField) {
+        const telError = document.getElementById('telephone-error');
+
+        telField.addEventListener('input', function() {
+            if (/[a-zA-Z]/.test(this.value)) {
+                if (telError) telError.style.display = 'block';
+                this.style.borderColor = '#ef4444';
+            } else {
+                if (telError) telError.style.display = 'none';
+                this.style.borderColor = '';
             }
         });
     }

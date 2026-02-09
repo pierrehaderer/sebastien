@@ -28,7 +28,8 @@ body.mes-services-page,
 body.tarifs-page,
 body.contact-page,
 body.mentions-legales-page,
-body.teamviewer-page {
+body.teamviewer-page,
+body.savoir-faire-page {
     background-image: url('background-image.jpg');
     background-size: cover;
     background-position: center;
@@ -72,8 +73,8 @@ body.teamviewer-page {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 3.3rem;
-    font-size: 1.2rem;
+    gap: 2.8rem;
+    font-size: 1rem;
     margin-right:20px;
     margin-bottom:10px;
 }
@@ -213,7 +214,7 @@ body.teamviewer-page {
     font-weight: bold;
     color: var(--text-color);
     line-height: 1.2;
-    margin-bottom: 0;
+    margin-bottom: 10px;
     text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
     text-align: center;
 }
@@ -268,6 +269,7 @@ body.teamviewer-page {
     flex-wrap: wrap;
     margin-top: 0.5rem;
     justify-content: center;
+    align-items: stretch;
 }
 
 .btn-wizard {
@@ -436,6 +438,56 @@ body.teamviewer-page {
 
 .radio-label span {
     user-select: none;
+}
+
+.btn-back {
+    border: 2px solid var(--primary-color);
+    background: var(--bg-white);
+    color: var(--primary-color);
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    flex-shrink: 0;
+    line-height: 1;
+    padding: 1rem;
+    min-width: 40px;
+    align-self: stretch;
+}
+
+.btn-back:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.btn-back-primary {
+    width: auto;
+    height: auto;
+    padding: 1rem 1.5rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    font-weight: bold;
+}
+
+.btn-back-primary:hover {
+    background: var(--secondary-color);
+}
+
+.wizard-form-buttons {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.wizard-form-buttons .btn-primary {
+    flex: 1;
+    font-size: 1rem;
 }
 
 .wizard-form .btn-primary {
@@ -840,6 +892,61 @@ body.teamviewer-page {
     }
 }
 
+/* Page Nos savoir faire */
+.savoir-faire-section {
+    padding: 2rem 0;
+}
+
+.savoir-faire-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.savoir-faire-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.savoir-faire-item .video-wrapper {
+    border-radius: 8px 8px 0 0;
+}
+
+.savoir-faire-item .video-wrapper iframe {
+    border-radius: 8px 8px 0 0;
+}
+
+.video-title {
+    font-size: 1rem;
+    color: var(--text-color);
+    text-align: center;
+    padding: 0.75rem 1rem;
+    margin: 0;
+    background: var(--bg-light);
+    border-radius: 0 0 8px 8px;
+    box-shadow: var(--shadow);
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Ratio 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+}
+
 /* Smooth scroll */
 html {
     scroll-behavior: smooth;
@@ -1217,6 +1324,13 @@ html {
     margin-top: 0.25rem;
 }
 
+.field-error {
+    color: #991b1b;
+    font-size: 0.85rem;
+    margin-top: 0.35rem;
+    display: block;
+}
+
 .form-note {
     text-align: center;
     font-size: 0.9rem;
@@ -1459,7 +1573,7 @@ html {
     border-radius: 8px;
 }
 
-.contact-form-wrapper h3 {
+.contact-form-wrapper h2 {
     font-size: 1.5rem;
     margin-bottom: 2rem;
     text-align: center;
@@ -1519,7 +1633,8 @@ html {
     .services-grid,
     .info-grid,
     .contact-page-grid,
-    .zones-grid {
+    .zones-grid,
+    .savoir-faire-grid {
         grid-template-columns: 1fr;
     }
 

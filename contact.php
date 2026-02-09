@@ -31,6 +31,11 @@ $is_wizard = !empty($appareil) || !empty($type_probleme);
 // Validation
 $errors = [];
 
+// Nom obligatoire
+if (empty($nom_complet)) {
+    $errors[] = "Le nom est obligatoire.";
+}
+
 // Pour le wizard et le formulaire de contact : téléphone obligatoire
 if (empty($telephone)) {
     $errors[] = "Le numéro de téléphone est obligatoire.";
