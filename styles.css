@@ -225,7 +225,14 @@ body.savoir-faire-page {
     line-height: 1.8;
     margin: 0;
     text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
-    text-align: justify;
+    text-align: center;
+}
+
+.nous-connaitre-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    text-align: center;
 }
 
 .btn-landing {
