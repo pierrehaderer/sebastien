@@ -346,6 +346,17 @@ body.savoir-faire-page {
     margin-right: auto;
 }
 
+.form-required-notice {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+    margin-bottom: 0.75rem;
+}
+
+.contact-form .form-required-notice {
+    color: #666;
+}
+
 .wizard-form .form-group {
     margin-bottom: 1rem;
 }
@@ -909,8 +920,63 @@ body.savoir-faire-page {
 }
 
 /* Page Nos savoir faire */
+.sf-nav-section {
+    padding: 1.5rem 0;
+}
+
+.sf-nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn-sf-nav {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-sf-nav:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.7);
+    transform: translateY(-2px);
+}
+
+.sf-category-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid rgba(255, 255, 255);
+}
+
+.sf-category-title {
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 600;
+}
+
+.savoir-faire-section[id] {
+    scroll-margin-top: 80px;
+}
+
+.savoir-faire-section + .savoir-faire-section {
+    padding-top: 1rem;
+}
+
 .savoir-faire-section {
-    padding: 2rem 0;
+    padding-bottom: 1rem;
+}
+.sf-placeholder {
+    color: #f1f1f1;
+    font-style: italic;
+    text-align: center;
 }
 
 .savoir-faire-grid {
@@ -937,6 +1003,7 @@ body.savoir-faire-page {
 
 .video-title {
     font-size: 1rem;
+    font-weight: bold;
     color: var(--text-color);
     text-align: center;
     padding: 0.75rem 1rem;
@@ -1675,6 +1742,17 @@ html {
         display: block;
         margin: 1.5rem auto 0 auto;
         max-width: 150px;
+    }
+
+    .sf-nav-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .btn-sf-nav {
+        width: 80%;
+        text-align: center;
     }
 }
 
