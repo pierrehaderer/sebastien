@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://druzila67informatique.fr/sitemap.xml
