@@ -235,6 +235,15 @@ body.savoir-faire-page {
     text-align: center;
 }
 
+.nous-connaitre-description {
+    font-size: 1.125rem;
+    color: var(--text-color);
+    line-height: 1.8;
+    margin: 0;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+    text-align: justify;
+}
+
 .btn-landing {
     margin-top: 0.5rem;
     align-self: flex-start;
