@@ -219,6 +219,16 @@ body.savoir-faire-page {
     text-align: center;
 }
 
+.landing-subtitle {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    line-height: 1.2;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
+
 .landing-description {
     font-size: 1.125rem;
     color: var(--text-color);
