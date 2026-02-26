@@ -53,7 +53,7 @@ if (empty($message)) {
 // Si des erreurs, rediriger vers le formulaire avec les erreurs
 if (!empty($errors)) {
     $error_message = implode(" ", $errors);
-    $redirect_page = $is_wizard ? 'index.html' : 'contact.html';
+    $redirect_page = $is_wizard ? '/' : 'contact.html';
     header("Location: " . $redirect_page . "?error=" . urlencode($error_message));
     exit;
 }
@@ -100,9 +100,11 @@ $headers[] = "Content-Type: text/plain; charset=UTF-8";
 // Envoi de l'email
 $mail_sent = @mail($to_email, $subject, $email_body, implode("\r\n", $headers));
 
-// Déterminer la page de redirection (wizard depuis index.html ou formulaire depuis contact.html)
+// Déterminer la page de redirection (wizard depuis / ou formulaire depuis contact.html)
 $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
-$redirect_page = (strpos($referer, 'index.html') !== false || $appareil || $type_probleme) ? 'index.html' : 'contact.html';
+$referer_path = parse_url($referer, PHP_URL_PATH);
+$is_home_referer = ($referer_path === '/' || $referer_path === '/index.html');
+$redirect_page = ($is_home_referer || $appareil || $type_probleme) ? '/' : 'contact.html';
 
 // Redirection selon le résultat
 if ($mail_sent) {
